@@ -4,11 +4,12 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN npm ci
+RUN npm install -g http-server && npm ci
 
 COPY . . 
-RUN npm run serve
 
-EXPOSE 3003
+RUN npm run build
 
-CMD [ "node", "server.js" ]
+EXPOSE 8080
+
+CMD [ "http-server", "dist" ]

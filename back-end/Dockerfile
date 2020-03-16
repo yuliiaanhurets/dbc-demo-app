@@ -1,6 +1,6 @@
 FROM node:10
 
-WORKDIR /front-end
+WORKDIR /usr/src/app
 
 COPY package*.json ./
 
@@ -8,8 +8,6 @@ RUN npm ci
 
 COPY . . 
 
-RUN npm run start
-
 EXPOSE 3002
 
-CMD [ "node", "server.js" ]
+CMD [ "npm", "start" ]
